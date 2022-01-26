@@ -83,6 +83,7 @@ float alpha = 0.95;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
+<<<<<<< HEAD
     /* my tweaked Tokyo Night */
     /* normal colours */
     [0]  = "#414868",    // black
