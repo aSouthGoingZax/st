@@ -1,0 +1,14 @@
+*~*
+*.tar.*
+*.tgz
+*.o
+*.out
+*.bak
+*.tmp
+*.temp
+*.rej
+*.orig
+
+config.h
+st
+patches/
