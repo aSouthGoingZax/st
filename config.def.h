@@ -2,11 +2,10 @@
 
 /*
  * appearance
- *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "monospace:pixelsize=21:antialias=true:autohint=true";
+static int borderpx = 12;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -31,7 +30,6 @@ static float chscale = 1.0;
 
 /*
  * word delimiter string
- *
  * More advanced example: L" `'\"()[]{}"
  */
 wchar_t *worddelimiters = L" ";
@@ -43,92 +41,79 @@ static unsigned int tripleclicktimeout = 600;
 /* alt screens */
 int allowaltscreen = 1;
 
-/* allow certain non-interactive (insecure) window operations such as:
-   setting the clipboard text */
+/* allow certain non-interactive (insecure) window operations such as: setting the clipboard text */
 int allowwindowops = 0;
 
 /*
- * draw latency range in ms - from new content/keypress/etc until drawing.
- * within this range, st draws when content stops arriving (idle). mostly it's
- * near minlatency, but it waits longer for slow updates to avoid partial draw.
- * low minlatency will tear/flicker more, as it can "detect" idle too early.
+ * draw latency range in ms - from new content/keypress/etc until drawing. Within this range, st draws
+ * when content stops arriving (idle). mostly it's near minlatency, but it waits longer for slow updates
+ * to avoid partial draw. low minlatency will tear/flicker more, as it can "detect" idle too early.
  */
 static double minlatency = 8;
 static double maxlatency = 33;
 
-/*
- * blinking timeout (set to 0 to disable blinking) for the terminal blinking
- * attribute.
- */
+/* blinking timeout (set to 0 to disable blinking) for the terminal blinking attribute. */
 static unsigned int blinktimeout = 800;
 
-/*
- * thickness of underline and bar cursors
- */
+/* thickness of underline and bar cursors */
 static unsigned int cursorthickness = 2;
 
-/*
- * bell volume. It must be a value between -100 and 100. Use 0 for disabling
- * it
- */
+/* bell volume. It must be a value between -100 and 100. Use 0 for disabling it */
 static int bellvolume = 0;
 
 /* default TERM value */
-char *termname = "st-256color";
+char *termname = "st";
 
 /*
  * spaces per tab
  *
- * When you are changing this value, don't forget to adapt the »it« value in
- * the st.info and appropriately install the st.info in the environment where
- * you use this st version.
+ * When you are changing this value, don't forget to adapt the »it« value in the st.info and
+ * appropriately install the st.info in the environment where you use this st version.
  *
  *	it#$tabspaces,
  *
- * Secondly make sure your kernel is not expanding tabs. When running `stty
- * -a` »tab0« should appear. You can tell the terminal to not expand tabs by
- *  running following command:
- *
+ * Secondly make sure your kernel is not expanding tabs. When running `stty a` »tab0« should appear.
+ * You can tell the terminal to not expand tabs by running following command:
  *	stty tabs
  */
 unsigned int tabspaces = 8;
 
+/* opacity */
+float alpha = 0.95;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
-
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+    /* my tweaked Tokyo Night */
+    /* normal colours */
+    [0]  = "#414868",    // black
+    [1]  = "#f7768e",    // red
+    [2]  = "#73daca",    // green
+    [3]  = "#e0af68",    // yellow
+    [4]  = "#7aa2f7",    // blue
+    [5]  = "#bb9af7",    // magenta
+    [6]  = "#7dcfff",    // cyan
+    [7]  = "#c0caf5",    // white
+    /* bright colors */
+    [8]  = "#373e5e",    // black
+    [9]  = "#ff6a82",    // red
+    [10] = "#69e4c0",    // green
+    [11] = "#eab95e",    // yellow
+    [12] = "#6e96ff",    // blue
+    [13] = "#c78eff",    // magenta
+    [14] = "#6edeff",    // cyan
+    [15] = "#cad4ff",    // white
+    /* [255] = 0, */
+    /* add more colors here for use by  default__ */
+    [256] = "#cccccc",   // cursor
+    [257] = "#555555",   // reverse cursor
+    [258] = "#1a1b26",   // background
+    [259] = "#a9b1d6",   // font
 };
 
 
-/*
- * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
- */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
+/* Default colors (colorname index) */
+unsigned int defaultbg = 258;
+unsigned int defaultfg = 259;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -137,34 +122,24 @@ static unsigned int defaultrcs = 257;
  * 2: Block ("█")
  * 4: Underline ("_")
  * 6: Bar ("|")
- * 7: Snowman ("☃")
  */
 static unsigned int cursorshape = 2;
 
-/*
- * Default columns and rows numbers
- */
-
+/* Default columns and rows numbers */
 static unsigned int cols = 80;
 static unsigned int rows = 24;
 
-/*
- * Default colour and shape of the mouse cursor
- */
+/* Default colour and shape of the mouse cursor */
 static unsigned int mouseshape = XC_xterm;
 static unsigned int mousefg = 7;
 static unsigned int mousebg = 0;
 
-/*
- * Color used to display font attributes when fontconfig selected a font which
- * doesn't match the ones requested.
- */
+/* Color used to display font attributes when fontconfig selected a font which doesn't match the ones requested. */
 static unsigned int defaultattr = 11;
 
 /*
- * Force mouse select/shortcuts while mask is active (when MODE_MOUSE is set).
- * Note that if you want to use ShiftMask with selmasks, set this to an other
- * modifier, set to 0 to not use it.
+ * Force mouse select/shortcuts while mask is active (when MODE_MOUSE is set). Note that if you want to use
+ * ShiftMask with selmasks, set this to an other modifier, set to 0 to not use it.
  */
 static uint forcemousemod = ShiftMask;
 
@@ -174,6 +149,8 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 3},      0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 3},      0, /* !alt */ -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -199,6 +176,9 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY|ControlMask,   XK_Return,      newterm,        {.i =  0} },
 };
 
 /*
@@ -222,10 +202,7 @@ static Shortcut shortcuts[] = {
  * position for a key.
  */
 
-/*
- * If you want keys other than the X11 function keys (0xFD00 - 0xFFFF)
- * to be mapped below, add them to this array.
- */
+/* If you want keys other than the X11 function keys (0xFD00 - 0xFFFF) to be mapped below, add them to this array. */
 static KeySym mappedkeys[] = { -1 };
 
 /*
@@ -234,10 +211,7 @@ static KeySym mappedkeys[] = { -1 };
  */
 static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;
 
-/*
- * This is the huge key array which defines all compatibility to the Linux
- * world. Please decide about changes wisely.
- */
+/* This is the huge key array which defines all compatibility to the Linux world. Make changes wisely. */
 static Key key[] = {
 	/* keysym           mask            string      appkey appcursor */
 	{ XK_KP_Home,       ShiftMask,      "\033[2J",       0,   -1},
@@ -276,7 +250,7 @@ static Key key[] = {
 	{ XK_KP_Delete,     ControlMask,    "\033[3;5~",    +1,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[2K",      -1,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[3;2~",    +1,    0},
-	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[P",       -1,    0},
+	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      -1,    0},
 	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0},
 	{ XK_KP_Multiply,   XK_ANY_MOD,     "\033Oj",       +2,    0},
 	{ XK_KP_Add,        XK_ANY_MOD,     "\033Ok",       +2,    0},
@@ -344,7 +318,7 @@ static Key key[] = {
 	{ XK_Delete,        ControlMask,    "\033[3;5~",    +1,    0},
 	{ XK_Delete,        ShiftMask,      "\033[2K",      -1,    0},
 	{ XK_Delete,        ShiftMask,      "\033[3;2~",    +1,    0},
-	{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0},
+	{ XK_Delete,        XK_ANY_MOD,     "\033[3~",      -1,    0},
 	{ XK_Delete,        XK_ANY_MOD,     "\033[3~",      +1,    0},
 	{ XK_BackSpace,     XK_NO_MOD,      "\177",          0,    0},
 	{ XK_BackSpace,     Mod1Mask,       "\033\177",      0,    0},
@@ -462,10 +436,7 @@ static uint selmasks[] = {
 	[SEL_RECTANGULAR] = Mod1Mask,
 };
 
-/*
- * Printable characters in ASCII, used to estimate the advance width
- * of single wide characters.
- */
+/* Printable characters in ASCII, used to estimate the advance width of single wide characters. */
 static char ascii_printable[] =
 	" !\"#$%&'()*+,-./0123456789:;<=>?"
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
