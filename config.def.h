@@ -84,7 +84,7 @@ float alpha = 0.95;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     /* my tweaked Tokyo Night */
-    /* normal colours */
+    /* normal */
     [0]  = "#414868",    // black
     [1]  = "#f7768e",    // red
     [2]  = "#73daca",    // green
@@ -93,7 +93,7 @@ static const char *colorname[] = {
     [5]  = "#bb9af7",    // magenta
     [6]  = "#7dcfff",    // cyan
     [7]  = "#c0caf5",    // white
-    /* bright colors */
+    /* bright */
     [8]  = "#373e5e",    // black
     [9]  = "#ff6a82",    // red
     [10] = "#69e4c0",    // green
@@ -103,13 +103,12 @@ static const char *colorname[] = {
     [14] = "#6edeff",    // cyan
     [15] = "#cad4ff",    // white
     /* [255] = 0, */
-    /* add more colors here for use by  default__ */
+    /* add more colours here for use by  default__ */
     [256] = "#cccccc",   // cursor
     [257] = "#555555",   // reverse cursor
     [258] = "#1a1b26",   // background
     [259] = "#a9b1d6",   // font
 };
-
 
 /* Default colors (colorname index) */
 unsigned int defaultbg = 258;
@@ -197,17 +196,16 @@ static Shortcut shortcuts[] = {
  * * > 0: cursor application mode enabled
  * * < 0: cursor application mode disabled
  *
- * Be careful with the order of the definitions because st searches in
- * this table sequentially, so any XK_ANY_MOD must be in the last
- * position for a key.
+ * Be careful with the order of the definitions because st searches in this table sequentially,
+ * so any XK_ANY_MOD must be in the last position for a key.
  */
 
 /* If you want keys other than the X11 function keys (0xFD00 - 0xFFFF) to be mapped below, add them to this array. */
 static KeySym mappedkeys[] = { -1 };
 
 /*
- * State bits to ignore when matching key or button events.  By default,
- * numlock (Mod2Mask) and keyboard layout (XK_SWITCH_MOD) are ignored.
+ * State bits to ignore when matching key or button events.
+ * By default, numlock (Mod2Mask) and keyboard layout (XK_SWITCH_MOD) are ignored.
  */
 static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;
 
