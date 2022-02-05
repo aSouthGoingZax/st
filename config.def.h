@@ -81,40 +81,31 @@ unsigned int tabspaces = 8;
 /* opacity */
 float alpha = 0.95;
 
-/* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-    /* my tweaked Tokyo Night */
-    /* normal */
-    [0]  = "#414868",    // black
-    [1]  = "#f7768e",    // red
-    [2]  = "#73daca",    // green
-    [3]  = "#e0af68",    // yellow
-    [4]  = "#7aa2f7",    // blue
-    [5]  = "#bb9af7",    // magenta
-    [6]  = "#7dcfff",    // cyan
-    [7]  = "#c0caf5",    // white
-    /* bright */
-    [8]  = "#373e5e",    // black
-    [9]  = "#ff6a82",    // red
-    [10] = "#69e4c0",    // green
-    [11] = "#eab95e",    // yellow
-    [12] = "#6e96ff",    // blue
-    [13] = "#c78eff",    // magenta
-    [14] = "#6edeff",    // cyan
-    [15] = "#cad4ff",    // white
-    /* [255] = 0, */
-    /* add more colours here for use by  default__ */
-    [256] = "#cccccc",   // cursor
-    [257] = "#555555",   // reverse cursor
-    [258] = "#1a1b26",   // background
-    [259] = "#a9b1d6",   // font
+static const char *palettes[][20] = {
+    {"#414868", "#f7768e", "#73daca", "#e0af68", "#7aa2f7", "#bb9af7", "#7dcfff", "#c0caf5",  // tokyo night
+     "#373e5e", "#ff6a82", "#69e4c0", "#eab95e", "#6e96ff", "#c78eff", "#6edeff", "#cad4ff",
+     "#1a1b26", "#a9b1d6", "#cccccc", "#1a1b26"},
+    {"#661919", "#991919", "#99cc00", "#cccc00", "#996699", "#993399", "#996666", "#cc9999",  // slayer
+     "#661919", "#991919", "#99cc00", "#cccc00", "#996699", "#993399", "#996666", "#cc9999",
+     "#190000", "#a80000", "#dd0000", "#190000"},
+    {"#5c6370", "#e06c75", "#98c379", "#e5c07b", "#61afef", "#c678dd", "#56b6c2", "#828997",  // one dark
+     "#525966", "#ea626b", "#8ecd6f", "#efca71", "#57a5f9", "#d06ee7", "#4cc0cc", "#8c93a1",
+     "#282c34", "#abb2bf", "#528bff", "#282c34"},
+    {"#6E6C7E", "#E38C8F", "#B1E3AD", "#EBDDAA", "#A4B9EF", "#C6AAE8", "#E5B4E2", "#DADAE8",  // catppuccin
+     "#646274", "#ed8285", "#a7eda3", "#f5e7a0", "#9aaff9", "#d0a0f2", "#dbbeec", "#e4e4f2",
+     "#1E1E28", "#DADAE8", "#B1E3AD", "#1E1E28"},
+    {"#434242", "#ef5350", "#22da6e", "#c5e478", "#82aaff", "#c792ea", "#21c7a8", "#ebebeb",  // night owl
+     "#393838", "#f94946", "#18e464", "#cfee6e", "#78a0ff", "#d188f4", "#17d1b2", "#f5f5f5",
+     "#011627", "#d6deeb", "#d6deeb", "#011627"},
 };
 
-/* Default colors (colorname index) */
-unsigned int defaultbg = 258;
-unsigned int defaultfg = 259;
-unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+static const char **colorname;
+
+/* Default colors (palettes index) */
+unsigned int defaultbg = 16;
+unsigned int defaultfg = 17;
+unsigned int defaultcs = 18;
+static unsigned int defaultrcs = 19;
 
 /*
  * Default shape of cursor
@@ -178,6 +169,15 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ MODKEY|ControlMask,   XK_Return,      newterm,        {.i =  0} },
+	{ TERMMOD|ShiftMask,    XK_F1,          setpalette,     {.i =  0} },
+	{ TERMMOD|ShiftMask,    XK_F2,          setpalette,     {.i =  1} },
+	{ TERMMOD|ShiftMask,    XK_F3,          setpalette,     {.i =  2} },
+	{ TERMMOD|ShiftMask,    XK_F4,          setpalette,     {.i =  3} },
+	{ TERMMOD|ShiftMask,    XK_F5,          setpalette,     {.i =  4} },
+	{ TERMMOD|ShiftMask,    XK_F6,          setpalette,     {.i =  5} },
+	{ TERMMOD|ShiftMask,    XK_F7,          setpalette,     {.i =  6} },
+	{ TERMMOD|ShiftMask,    XK_F8,          setpalette,     {.i =  7} },
+	{ TERMMOD|ShiftMask,    XK_F9,          setpalette,     {.i =  8} },
 };
 
 /*
