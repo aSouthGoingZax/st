@@ -82,21 +82,30 @@ unsigned int tabspaces = 8;
 float alpha = 0.95;
 
 static const char *palettes[][20] = {
-    {"#414868", "#f7768e", "#73daca", "#e0af68", "#7aa2f7", "#bb9af7", "#7dcfff", "#c0caf5",  // tokyo night
+    /* tokyo night */
+    {"#414868", "#f7768e", "#73daca", "#e0af68", "#7aa2f7", "#bb9af7", "#7dcfff", "#c0caf5",
      "#373e5e", "#ff6a82", "#69e4c0", "#eab95e", "#6e96ff", "#c78eff", "#6edeff", "#cad4ff",
      "#1a1b26", "#a9b1d6", "#cccccc", "#1a1b26"},
-    {"#661919", "#991919", "#99cc00", "#cccc00", "#996699", "#993399", "#996666", "#cc9999",  // slayer
+    /* slayer */
+    {"#661919", "#991919", "#99cc00", "#cccc00", "#996699", "#993399", "#996666", "#cc9999",
      "#661919", "#991919", "#99cc00", "#cccc00", "#996699", "#993399", "#996666", "#cc9999",
      "#190000", "#a80000", "#dd0000", "#190000"},
-    {"#5c6370", "#e06c75", "#98c379", "#e5c07b", "#61afef", "#c678dd", "#56b6c2", "#828997",  // one dark
+    /* one dark */
+    {"#5c6370", "#e06c75", "#98c379", "#e5c07b", "#61afef", "#c678dd", "#56b6c2", "#828997",
      "#525966", "#ea626b", "#8ecd6f", "#efca71", "#57a5f9", "#d06ee7", "#4cc0cc", "#8c93a1",
      "#282c34", "#abb2bf", "#528bff", "#282c34"},
-    {"#6E6C7E", "#E38C8F", "#B1E3AD", "#EBDDAA", "#A4B9EF", "#C6AAE8", "#E5B4E2", "#DADAE8",  // catppuccin
-     "#646274", "#ed8285", "#a7eda3", "#f5e7a0", "#9aaff9", "#d0a0f2", "#dbbeec", "#e4e4f2",
-     "#1E1E28", "#DADAE8", "#B1E3AD", "#1E1E28"},
-    {"#434242", "#ef5350", "#22da6e", "#c5e478", "#82aaff", "#c792ea", "#21c7a8", "#ebebeb",  // night owl
+    /* night owl */
+    {"#434242", "#ef5350", "#22da6e", "#c5e478", "#82aaff", "#c792ea", "#21c7a8", "#ebebeb",
      "#393838", "#f94946", "#18e464", "#cfee6e", "#78a0ff", "#d188f4", "#17d1b2", "#f5f5f5",
      "#011627", "#d6deeb", "#d6deeb", "#011627"},
+    /* catppuccin */
+    {"#6E6C7E", "#E38C8F", "#B1E3AD", "#EBDDAA", "#A4B9EF", "#C6AAE8", "#E5B4E2", "#DADAE8",
+     "#646274", "#ed8285", "#a7eda3", "#f5e7a0", "#9aaff9", "#d0a0f2", "#dbbeec", "#e4e4f2",
+     "#1E1E28", "#DADAE8", "#B1E3AD", "#1E1E28"},
+    /* gruvbox */
+    {"#32302f", "#cc241d", "#98971a", "#d79921", "#458588", "#b16286", "#689d6a", "#a89984",
+     "#928374", "#fb4934", "#b8bb26", "#fabd2f", "#83a598", "#d3869b", "#8ec07c", "#ebdbb2",
+     "#1d2021", "#ebdbb2", "#ebdbb2", "#1d2021"},
 };
 
 static const char **colorname;
