@@ -38,6 +38,7 @@ Applied patches
 ---------------
 alpha
 delkey
+desktopentry
 newterm-orphan
 scrollback, scrollback-mouse-altscreen
 workingdir
