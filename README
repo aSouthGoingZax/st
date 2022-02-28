@@ -39,5 +39,7 @@ Applied patches
 alpha
 color_schemes
 delkey
+desktopentry
 newterm-orphan
 scrollback, scrollback-mouse-altscreen
+workingdir
