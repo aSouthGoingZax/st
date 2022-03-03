@@ -98,10 +98,10 @@ static const char *palettes[][20] = {
     {"#434242", "#ef5350", "#22da6e", "#c5e478", "#82aaff", "#c792ea", "#21c7a8", "#ebebeb",
      "#393838", "#f94946", "#18e464", "#cfee6e", "#78a0ff", "#d188f4", "#17d1b2", "#f5f5f5",
      "#011627", "#d6deeb", "#d6deeb", "#011627"},
-    /* catppuccin */
-    {"#6E6C7E", "#E38C8F", "#B1E3AD", "#EBDDAA", "#A4B9EF", "#C6AAE8", "#E5B4E2", "#DADAE8",
-     "#646274", "#ed8285", "#a7eda3", "#f5e7a0", "#9aaff9", "#d0a0f2", "#dbbeec", "#e4e4f2",
-     "#1E1E28", "#DADAE8", "#B1E3AD", "#1E1E28"},
+    /* well, it started out as catppuccin */
+    {"#454355", "#B0595C", "#7EC47A", "#C2BE77", "#717CBC", "#B163B5", "#8A9FC3", "#B1B1BF",
+     "#3B394B", "#BA4F52", "#74CE70", "#CCC86D", "#6772C6", "#BB59BF", "#80A9CD", "#BBBBC9",
+     "#000000", "#C8C8BE", "#E1E1D7", "#252517"},
     /* monokai dark */
     {"#403E41", "#F92672", "#A6E22E", "#F4BF75", "#66D9EF", "#AE81FF", "#A1EFE4", "#F8F8F2",
      "#75715E", "#ff1c68", "#9cec24", "#fec96b", "#5ccff9", "#b372ff", "#97f9ee", "#F9F8F5",
